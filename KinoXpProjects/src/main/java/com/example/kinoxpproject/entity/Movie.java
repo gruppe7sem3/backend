@@ -16,25 +16,34 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class Movie {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "movie_id") // Specify the column name for movieId
-    private int movieId;
+    private int id;
 
-    @Column(name = "movie_name") // Specify the column name for name
-    private String name;
-
-    @Column(name = "movie_description") // Specify the column name for description
-    private String description;
-
-    @Column(name = "movie_duration") // Specify the column name for duration
-    private long duration;
-
-    @Column(name = "movie_genre") // Specify the column name for genre
+    private String title;
+    private String year;
+    private String rated;
+    private String released;
+    private String runtime;
     private String genre;
+    private String director;
+    private String writer;
+    private String actors;
+
+    @Column(length = 2000)
+    private String plot;
+    @Column(length = 2000)
+    private String plotDK;
+    private String poster;
+
+    private String metascore;
+    private String imdbRating;
+    private String imdbVotes;
 
     @Column(unique = true)
     private String imdbID;
     private String website;
     private String response;
+
 }

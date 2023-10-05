@@ -33,17 +33,23 @@ public class MovieService {
 
         Movie movie = Movie.builder()
 
-
+                .title(dto.getTitle())
+                .year(dto.getYear())
+                .rated(dto.getRated())
+                .released(dto.getReleased())
+                .runtime(dto.getRuntime())
                 .genre(dto.getGenre())
-
-
-
-
+                .director(dto.getDirector())
+                .writer(dto.getWriter())
+                .actors(dto.getActors())
+                .metascore(dto.getMetascore())
+                .imdbRating(dto.getImdbRating())
+                .imdbVotes(dto.getImdbVotes())
                 .website(dto.getWebsite())
                 .response(dto.getResponse())
-
+                .plot(dto.getPlot())
                 //.plotDK(dkPlot)
-
+                .poster(dto.getPoster())
                 .imdbID(dto.getImdbID())
                 .build();
         try {
