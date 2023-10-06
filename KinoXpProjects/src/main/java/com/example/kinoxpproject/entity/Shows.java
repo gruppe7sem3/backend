@@ -31,4 +31,6 @@ public class Shows {
 
     @Column(name = "show_time") // Specify the column name for showTime
     private LocalDateTime showTime;
+
+
 }

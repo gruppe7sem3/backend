@@ -27,4 +27,8 @@ public class Seat {
 
     @Column(name = "is_booked") // Specify the column name for isBooked
     private boolean isBooked;
+
+    @ManyToOne
+    @JoinColumn(name = "show_id") // Add this to associate a seat with a show
+    private Shows show;
 }
