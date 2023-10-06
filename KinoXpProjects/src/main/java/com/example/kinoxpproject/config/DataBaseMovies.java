@@ -29,6 +29,8 @@ public class DataBaseMovies implements ApplicationRunner {
         movieService.addMovie("tt0439572");
         movieService.addMovie("tt0443453");
         movieService.addMovie("tt1645170");
+        movieService.addMovie("tt0109686");
+        movieService.addMovie("tt4425200");
 
 
     }
