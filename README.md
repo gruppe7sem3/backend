@@ -2,11 +2,10 @@
 Cinema Details:
 
 Small cinema with 2 movie theaters.
-Shows movies from various categories.
-Different age limits for movies.
-Seating capacity:
 Smaller theatre: 20 rows x 12 seats/row.
 Larger theatre: 25 rows x 16 seats/row.
+Shows movies from various categories.
+Different age limits for movies.
 Transition from phone reservations to online booking.
 Show schedules planned 3 months in advance.
 Occasional extra shows or events.
