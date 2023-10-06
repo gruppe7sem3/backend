@@ -7,7 +7,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin
+
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/movies")
 public class MovieController {
 
@@ -17,7 +18,7 @@ public class MovieController {
     this.movieService = movieService;
   }
 
-  @CrossOrigin(origins = "http://127.0.0.1:5501") // Allow requests from this origin
+
   @RequestMapping("/imdbid/{imdbId}")
   public Movie getMovie(@PathVariable String imdbId) {
     return movieService.getMovieByImdbId(imdbId);
