@@ -13,5 +13,13 @@ import java.util.Optional;
 
 @Repository
 public interface ShowsRepository extends JpaRepository<Shows, Integer> {
+    @Query("SELECT m.imdbID FROM Movie m JOIN Shows s ON s.movieId.id = m.id WHERE s.showId = :showId")
+    String findImdbIDByShowId(int showId);
+
+
+
+
+
+
 
 }

@@ -1,5 +1,6 @@
 package com.example.kinoxpproject.config;
 
+import com.example.kinoxpproject.dto.BookingRequest;
 import com.example.kinoxpproject.entity.*;
 import com.example.kinoxpproject.repository.*;
 import com.example.kinoxpproject.service.*;
@@ -35,9 +36,16 @@ public class testData implements ApplicationRunner {
 
     MovieService movieService;
 
+    @Autowired
+    HallService hallService;
+
     public void run(ApplicationArguments args) throws Exception {
 
 
+
+        String data = showsService.findImdbidByShowId(1);
+        System.out.println(data);
+/*
         Hall hall = new Hall();
         hall.setHallId(1);
         hall.setCapacity(500);
@@ -46,6 +54,8 @@ public class testData implements ApplicationRunner {
         hallRepository.save(hall);
 
         Seat seat = seatSerivce.getSeatById(4);
+
+        Seat seat2 = seatSerivce.getSeatById(2);
 
         Customer customer = new Customer();
 
@@ -56,10 +66,11 @@ public class testData implements ApplicationRunner {
 
         Shows show = new Shows();
         show.setHall(hall);
-        show.setShowId(6);
+        show.setShowId(1);
         show.setMovieId(movieService.getMovieByid(1));
 
-        showsRepository.save(show);
+
+       // showsRepository.save(show);
 
 
         Booking booking = new Booking();
@@ -68,9 +79,33 @@ public class testData implements ApplicationRunner {
         booking.setCustomer(customer);
         booking.setShows(show);
 
+        Booking booking2 = new Booking();
+        booking2.setBookingId(2);
+        booking2.setSeat(seat2);
+        booking2.setCustomer(customer);
+        booking2.setShows(show);
+
+
+
 
 
         bookingRepository.save(booking);
+        bookingRepository.save(booking2);
+    Shows shows = new Shows();
+        shows.setMovieId(movieService.getMovieByid(8));
+        shows.setHall(hallService.getHallById(1));
+        shows.setShowId(3);
+        showsRepository.save(shows);
+
+ */
+
+        BookingRequest bookingRequest = new BookingRequest();
+        bookingRequest.setCustomerId(1);
+        bookingRequest.setShowId(7);
+        bookingRequest.setSeatId(40);
+
+        //bookingService.addBooking(bookingRequest);
+
 
 
     }
