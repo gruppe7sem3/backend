@@ -7,6 +7,7 @@ import com.example.kinoxpproject.repository.SeatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,10 +17,15 @@ public class BookingService {
     private final BookingRepository bookingRepository;
     private final SeatRepository seatRepository;
 
+    private final CustomerService customerService;
+    private final ShowsService ShowService;
+
     @Autowired
-    public BookingService(BookingRepository bookingRepository, SeatRepository seatRepository) {
+    public BookingService(BookingRepository bookingRepository, SeatRepository seatRepository, CustomerService customerService, ShowsService showService) {
         this.bookingRepository = bookingRepository;
         this.seatRepository = seatRepository;
+        this.customerService = customerService;
+        ShowService = showService;
     }
 
     // Create a new booking
@@ -65,7 +71,7 @@ public class BookingService {
     }
 
     // Get a booking by ID
-    public Optional<Booking> getBookingById(long bookingId) {
+    public Optional<Booking> getBookingById(int bookingId) {
         return bookingRepository.findById(bookingId);
     }
 
@@ -76,7 +82,7 @@ public class BookingService {
     }
 
     // Delete a booking by ID
-    public void deleteBooking(long bookingId) {
+    public void deleteBooking(int bookingId) {
         bookingRepository.deleteById(bookingId);
     }
 }
