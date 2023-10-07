@@ -2,14 +2,18 @@ package com.example.kinoxpproject.service;
 
 import com.example.kinoxpproject.entity.Customer;
 import com.example.kinoxpproject.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CustomerService {
 
-    private CustomerRepository customerRepository;
+    @Autowired
+    CustomerRepository customerRepository;
 
-    public Customer getCustomerById(int customerId) {
-        return customerRepository.getCustomerById(customerId);
+    public Optional<Customer> getCustomerById(int customerId) {
+        return customerRepository.findById(customerId);
     }
 }

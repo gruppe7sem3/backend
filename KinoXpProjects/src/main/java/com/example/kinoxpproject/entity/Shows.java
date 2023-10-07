@@ -20,7 +20,7 @@ public class Shows {
 
     @ManyToOne
     @JoinColumn(name = "movie_id") // Specify the column name for movieId
-    private Movie movie;
+    private Movie movieId;
 
     @ManyToOne
     @JoinColumn(name = "hall_id" ) // Specify the column name for hallId

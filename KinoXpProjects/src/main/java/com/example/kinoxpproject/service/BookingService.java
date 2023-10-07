@@ -20,7 +20,6 @@ public class BookingService {
     private final CustomerService customerService;
     private final ShowsService ShowService;
 
-    @Autowired
     public BookingService(BookingRepository bookingRepository, SeatRepository seatRepository, CustomerService customerService, ShowsService showService) {
         this.bookingRepository = bookingRepository;
         this.seatRepository = seatRepository;
@@ -28,34 +27,10 @@ public class BookingService {
         ShowService = showService;
     }
 
+
+
     // Create a new booking
-    public Booking createBooking(int showId, int customerId, Booking booking) {
-        // Implement validation logic if needed
 
-        // Create a new seat
-        Seat seat = new Seat();
-        seat.setSeatNum(booking.getSeat().getSeatNum());
-        seat.setRow(booking.getSeat().getRow());
-        // Set the hall for the seat (you may need to retrieve it based on showId)
-        // seat.setHall(hallService.getHallByShowId(showId));
-
-        // Create the seat in the database
-        seat = seatRepository.save(seat);
-
-        // Set the newly created seat in the booking
-        booking.setSeat(seat);
-
-        // Set the show and customer in the booking (assuming you have services for them)
-        booking.setShows(ShowService.getShowById(showId));
-        booking.setCustomer(customerService.getCustomerById(customerId));
-
-        // Set the booking timestamp and total amount
-        booking.setTimestamp(new Date()); // You can customize this logic
-        booking.setTotalAmount(calculateTotalAmount(booking)); // Implement your own calculation logic
-
-        // Create the booking
-        return bookingRepository.save(booking);
-    }
 
     // Implement your own logic to calculate the total amount
     private double calculateTotalAmount(Booking booking) {

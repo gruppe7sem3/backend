@@ -14,19 +14,13 @@ import java.util.Optional;
 @RequestMapping("/api/bookings")
 public class BookingController {
 
-    private final BookingService bookingService;
+    BookingService bookingService;
 
-    @Autowired
     public BookingController(BookingService bookingService) {
         this.bookingService = bookingService;
     }
 
     // Create a new booking
-    @PostMapping
-    public ResponseEntity<Booking> createBooking(@RequestBody Booking booking) {
-        Booking createdBooking = bookingService.createBooking(booking);
-        return new ResponseEntity<>(createdBooking, HttpStatus.CREATED);
-    }
 
     // Get all bookings
     @GetMapping
