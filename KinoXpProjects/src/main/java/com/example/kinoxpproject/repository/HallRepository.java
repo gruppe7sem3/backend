@@ -9,7 +9,6 @@ import java.util.Optional;
 
 @Repository
 public interface HallRepository extends JpaRepository<Hall, Integer> {
-    @Override
-    Optional<Hall> findById(Integer id);
+
 
 }

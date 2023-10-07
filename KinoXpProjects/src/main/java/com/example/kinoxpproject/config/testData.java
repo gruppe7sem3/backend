@@ -8,13 +8,6 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Configuration;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-
 @Configuration
 public class testData implements ApplicationRunner {
 
@@ -34,22 +27,25 @@ public class testData implements ApplicationRunner {
     ShowsService showsService;
     @Autowired
     BookingService bookingService;
+    @Autowired
+
+    SeatService seatSerivce;
+
+    @Autowired
+
+    MovieService movieService;
 
     public void run(ApplicationArguments args) throws Exception {
 
 
         Hall hall = new Hall();
-        hall.setHallId(2);
-        System.out.println(hall);
-
+        hall.setHallId(1);
+        hall.setCapacity(500);
+        hall.setHallName("Sal 1");
 
         hallRepository.save(hall);
 
-        Seat seat = new Seat();
-        seat.setSeatId(1);
-        seat.setHall(hall);
-
-        seatRepository.save(seat);
+        Seat seat = seatSerivce.getSeatById(4);
 
         Customer customer = new Customer();
 
@@ -58,29 +54,23 @@ public class testData implements ApplicationRunner {
 
         customerRepository.save(customer);
 
+        Shows show = new Shows();
+        show.setHall(hall);
+        show.setShowId(6);
+        show.setMovieId(movieService.getMovieByid(1));
+
+        showsRepository.save(show);
+
 
         Booking booking = new Booking();
         booking.setBookingId(1);
         booking.setSeat(seat);
         booking.setCustomer(customer);
+        booking.setShows(show);
+
+
 
         bookingRepository.save(booking);
-
-        Optional<Booking> booking1 = bookingService.getBookingById(1);
-        System.out.println(booking1);
-
-
-
-
-        //show = showsService.createShow(show); // Create the show
-
-        //Create Seat
-
-
-        //seatService.createSeats(seats); // Create the seats
-
-
-
 
 
     }

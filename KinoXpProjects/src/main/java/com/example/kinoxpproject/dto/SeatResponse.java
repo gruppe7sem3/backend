@@ -17,13 +17,12 @@ public class SeatResponse {
     private int seatId;
     private String seatNum;
     private String row;
-    private Hall hall;
+    private int hallId;
 
     public SeatResponse(Seat seat){
         this.seatId = seat.getSeatId();
-        this.seatNum = seat.getSeatNum();
-        this.row = seat.getRow();
-        this.hall = seat.getHall();
+        this.hallId = seat.getHall().getHallId();
+
     }
 
     }

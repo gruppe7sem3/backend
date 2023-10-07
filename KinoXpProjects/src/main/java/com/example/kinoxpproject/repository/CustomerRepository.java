@@ -10,6 +10,5 @@ import java.util.Optional;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
-    @Override
-    Optional<Customer> findById(Integer id);
+
 }

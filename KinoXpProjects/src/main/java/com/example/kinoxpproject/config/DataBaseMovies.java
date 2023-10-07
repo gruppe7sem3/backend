@@ -20,6 +20,8 @@ public class DataBaseMovies implements ApplicationRunner {
 
 
     public void run(ApplicationArguments args) throws Exception {
+
+        /*
         movieService.addMovie("tt1517268");
         movieService.addMovie("tt3291150");
         movieService.addMovie("tt17024450");
@@ -33,6 +35,8 @@ public class DataBaseMovies implements ApplicationRunner {
         movieService.addMovie("tt4425200");
 
 
+
+         */
     }
 
 

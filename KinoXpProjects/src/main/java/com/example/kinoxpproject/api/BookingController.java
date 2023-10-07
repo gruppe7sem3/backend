@@ -1,5 +1,6 @@
 package com.example.kinoxpproject.api;
 
+import com.example.kinoxpproject.dto.BookingResponse;
 import com.example.kinoxpproject.entity.Booking;
 import com.example.kinoxpproject.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,39 +25,22 @@ public class BookingController {
 
     // Get all bookings
     @GetMapping
-    public ResponseEntity<List<Booking>> getAllBookings() {
-        List<Booking> bookings = bookingService.getAllBookings();
-        return new ResponseEntity<>(bookings, HttpStatus.OK);
+    public List<BookingResponse> getAllBookings() {
+       return bookingService.getAllBookings();
+
+    }
+    @GetMapping("/{bookingId}")
+    public BookingResponse getAllBookings(@PathVariable int bookingId) {
+        return bookingService.getBookingById2(bookingId);
+
+    }
+
+    @GetMapping("/seatIdsForShow/{showId}")
+    public List<Integer> getSeatIdsForShow(@PathVariable int showId) {
+        return bookingService.getSeatIdsForShow(showId);
     }
 
     // Get a booking by ID
-    @GetMapping("/{bookingId}")
-    public ResponseEntity<Booking> getBookingById(@PathVariable int bookingId) {
-        Optional<Booking> booking = bookingService.getBookingById(bookingId);
-        return booking.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
-    }
 
     // Update a booking
-    @PutMapping("/{bookingId}")
-    public ResponseEntity<Booking> updateBooking(@PathVariable int bookingId, @RequestBody Booking booking) {
-        if (bookingService.getBookingById(bookingId).isPresent()) {
-            booking.setBookingId(bookingId);
-            Booking updatedBooking = bookingService.updateBooking(booking);
-            return new ResponseEntity<>(updatedBooking, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
-
-    // Delete a booking by ID
-    @DeleteMapping("/{bookingId}")
-    public ResponseEntity<Void> deleteBooking(@PathVariable int bookingId) {
-        if (bookingService.getBookingById(bookingId).isPresent()) {
-            bookingService.deleteBooking(bookingId);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
 }

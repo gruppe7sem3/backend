@@ -14,9 +14,4 @@ import java.util.Optional;
 @Repository
 public interface ShowsRepository extends JpaRepository<Shows, Integer> {
 
-    @Override
-    Optional<Shows> findById(Integer integer);
-
-    @Query(value = "INSERT INTO shows (movie_id, hall_id, show_date, show_time) VALUES (:movieId, :hallId, :showDate, :showTime)", nativeQuery = true)
-    void createShow(@Param("movieId") int movieId, @Param("hallId") int hallId, @Param("showDate") LocalDate showDate, @Param("showTime") LocalDateTime showTime);
 }

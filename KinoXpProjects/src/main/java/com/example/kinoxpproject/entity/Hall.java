@@ -24,9 +24,6 @@ public class Hall {
     @Column(name = "capacity") // Specify the column name for capacity
     private int capacity;
 
-    @Column(name = "layout") // Specify the column name for layout
-    private String layout;
-
     @OneToMany(mappedBy = "hall")
     private List<Shows> shows;
 
