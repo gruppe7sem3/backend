@@ -6,6 +6,8 @@ import com.example.kinoxpproject.service.MovieService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 
 @CrossOrigin(origins = "*")
@@ -26,6 +28,11 @@ public class MovieController {
   @PostMapping("/{imdbId}")
   public Movie addMovie(@PathVariable String imdbId) throws JsonProcessingException {
     return movieService.addMovie(imdbId);
+  }
+
+  @GetMapping("/all")
+  public List<Movie> getAllMovies() {
+    return movieService.getAllMovies();
   }
 
   }
