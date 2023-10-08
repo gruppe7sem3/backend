@@ -1,5 +1,6 @@
 package com.example.kinoxpproject.service;
 
+import com.example.kinoxpproject.dto.CustomerRequest;
 import com.example.kinoxpproject.entity.Customer;
 import com.example.kinoxpproject.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,4 +20,10 @@ public class CustomerService {
         return customerRepository.findById(customerId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Customer with this ID does not exist"));
     }
+    public Customer addCustomer(CustomerRequest customerRequest) {
+        Customer customer = customerRequest.toCustomer();
+
+        return customerRepository.save(customer);
+    }
+
 }

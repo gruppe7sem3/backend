@@ -1,6 +1,7 @@
 package com.example.kinoxpproject.config;
 
 import com.example.kinoxpproject.dto.BookingRequest;
+import com.example.kinoxpproject.dto.CustomerRequest;
 import com.example.kinoxpproject.entity.*;
 import com.example.kinoxpproject.repository.*;
 import com.example.kinoxpproject.service.*;
@@ -38,6 +39,9 @@ public class testData implements ApplicationRunner {
 
     @Autowired
     HallService hallService;
+
+    @Autowired
+    CustomerService customerService;
 
     public void run(ApplicationArguments args) throws Exception {
 
@@ -105,6 +109,13 @@ public class testData implements ApplicationRunner {
         bookingRequest.setSeatId(40);
 
         //bookingService.addBooking(bookingRequest);
+
+        CustomerRequest customerRequest = new CustomerRequest();
+        customerRequest.setEmail("yolo.com");
+        customerRequest.setName("Ole kloak");
+
+       // customerService.addCustomer(customerRequest);
+
 
 
 

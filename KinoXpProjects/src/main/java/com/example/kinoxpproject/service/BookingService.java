@@ -11,14 +11,11 @@ import com.example.kinoxpproject.repository.CustomerRepository;
 import com.example.kinoxpproject.repository.SeatRepository;
 import com.example.kinoxpproject.repository.ShowsRepository;
 import jakarta.persistence.EntityNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -79,7 +76,7 @@ public class BookingService {
         bookingRepository.deleteById(bookingId);
     }
 
-    public void addBooking(BookingRequest bookingRequest) {
+    public Booking addBooking(BookingRequest bookingRequest) {
         // Retrieve Seat, Shows, and Customer entities based on IDs
         Seat seat = seatRepository.findById(bookingRequest.getSeatId())
                 .orElseThrow(() -> new EntityNotFoundException("Seat not found"));
@@ -94,6 +91,9 @@ public class BookingService {
         Booking booking = bookingRequest.toBooking(seat, shows, customer);
 
         // Save the Booking entity
-        bookingRepository.save(booking);
+        Booking createdBooking = bookingRepository.save(booking);
+
+        return createdBooking; // Return the created Booking entity
     }
+
 }

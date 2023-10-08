@@ -17,7 +17,6 @@ public class BookingRequest {
     private int seatId;
     private int showId;
     private int customerId;
-    private double totalAmount;
 
     public Booking toBooking(Seat seat, Shows shows, Customer customer) {
         return Booking.builder()
@@ -25,7 +24,6 @@ public class BookingRequest {
                 .shows(shows)
                 .customer(customer)
                 .timestamp(new Date()) // Set the timestamp as needed
-                .totalAmount(totalAmount)
                 // Set other properties of the booking entity as needed
                 .build();
     }
