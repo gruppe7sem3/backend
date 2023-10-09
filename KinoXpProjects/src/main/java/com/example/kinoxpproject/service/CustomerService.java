@@ -16,6 +16,10 @@ public class CustomerService {
     @Autowired
     CustomerRepository customerRepository;
 
+
+    public Integer getCustIdByUsernameAndPassword(String name, String password) {
+        return customerRepository.getCustIdByNameAndPassword(name, password);
+    }
     public Customer getCustomerById(int customerId) {
         return customerRepository.findById(customerId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST, "Customer with this ID does not exist"));

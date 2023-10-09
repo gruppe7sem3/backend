@@ -20,7 +20,7 @@ public class Customer {
     @Column(name = "cust_id") // Specify the column name for custId
     private int custId;
 
-    @Column(name = "customer_name") // Specify the column name for name
+    @Column(name = "customer_name", unique = true) // Specify the column name for name
     private String name;
 
     @Column(name = "customer_password") // Specify the column name for name

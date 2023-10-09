@@ -21,6 +21,7 @@ public class loginController {
     public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
         // Authenticate the user based on email and password
         Customer customer = customerService.authLogin(loginRequest.getName(), loginRequest.getPassword());
+        Integer custId = customerService.getCustIdByUsernameAndPassword( loginRequest.getPassword(),loginRequest.getName());
 
         if (customer == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
@@ -28,6 +29,6 @@ public class loginController {
 
         // Authentication successful, you can generate a JWT token here and return it
         // ...
-        return ResponseEntity.ok("Authentication successful");
+        return ResponseEntity.ok("" + custId);
     }
     }

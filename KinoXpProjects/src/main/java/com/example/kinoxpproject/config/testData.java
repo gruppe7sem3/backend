@@ -116,6 +116,9 @@ public class testData implements ApplicationRunner {
 
        // customerService.addCustomer(customerRequest);
 
+       int i = customerRepository.getCustIdByNameAndPassword("hej", "hej");
+        System.out.println(i);
+
 
 
 
