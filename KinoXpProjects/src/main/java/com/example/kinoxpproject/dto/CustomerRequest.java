@@ -11,10 +11,14 @@ import lombok.*;
 public class CustomerRequest {
 
     private String name;
+    private String password;
     private String email;
+
+
     public Customer toCustomer() {
         return Customer.builder()
                 .name(name)
+                .password(password)
                 .email(email)
                 .build();
     }

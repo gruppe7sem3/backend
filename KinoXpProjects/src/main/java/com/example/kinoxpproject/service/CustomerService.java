@@ -26,4 +26,9 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
+    public Customer authLogin(String name, String password) {
+        // Authenticate
+        return customerRepository.findByNameAndPassword(name, password);
+    }
+
 }

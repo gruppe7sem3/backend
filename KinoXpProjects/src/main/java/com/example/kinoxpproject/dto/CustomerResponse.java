@@ -14,13 +14,17 @@ public class CustomerResponse {
 
     private int custId;
     private String name;
+
+    private String password;
     private String email;
     private String phone;
+
 
     // Constructor to create a response from a Customer entity
     public CustomerResponse(Customer customer) {
         this.custId = customer.getCustId();
         this.name = customer.getName();
+        this.password = customer.getPassword();
         this.email = customer.getEmail();
         this.phone = customer.getPhone();
     }

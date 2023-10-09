@@ -23,6 +23,9 @@ public class Customer {
     @Column(name = "customer_name") // Specify the column name for name
     private String name;
 
+    @Column(name = "customer_password") // Specify the column name for name
+    private String password;
+
     @Column(name = "customer_email") // Specify the column name for email
     private String email;
 
