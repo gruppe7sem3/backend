@@ -1,5 +1,6 @@
 package com.example.kinoxpproject.service;
 
+import com.example.kinoxpproject.dto.ShowsRequest;
 import com.example.kinoxpproject.dto.ShowsResponse;
 import com.example.kinoxpproject.entity.Movie;
 import com.example.kinoxpproject.entity.Shows;
@@ -52,6 +53,12 @@ public class ShowsService {
     }
     public String findImdbidByShowId(int showId) {
         return showsRepository.findImdbIDByShowId(showId);
+    }
+
+    public Shows addShows(ShowsRequest showsRequest){
+        Shows shows = showsRequest.ShowsBuilder();
+        return showsRepository.save(shows);
+
     }
 
 }

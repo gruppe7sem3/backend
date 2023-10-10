@@ -1,5 +1,6 @@
 package com.example.kinoxpproject.api;
 
+import com.example.kinoxpproject.dto.ShowsRequest;
 import com.example.kinoxpproject.dto.ShowsResponse;
 import com.example.kinoxpproject.entity.Movie;
 import com.example.kinoxpproject.entity.Shows;
@@ -41,6 +42,14 @@ public class ShowsController {
 
         return new ResponseEntity<>(showsResponses, HttpStatus.OK);
     }
+
+    @PostMapping("/add")
+    public Shows addShows(@RequestBody ShowsRequest showsRequest) {
+        // Create a Shows object from the request data
+        return showsService.addShows(showsRequest);
+    }
+
+
 
 
 
