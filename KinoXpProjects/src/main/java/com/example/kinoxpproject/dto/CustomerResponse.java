@@ -4,8 +4,7 @@ import com.example.kinoxpproject.entity.Customer;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
-@Getter
-@Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -14,6 +13,7 @@ public class CustomerResponse {
 
     private int custId;
     private String name;
+    private boolean isAdmin;
 
     private String password;
     private String email;
@@ -27,5 +27,6 @@ public class CustomerResponse {
         this.password = customer.getPassword();
         this.email = customer.getEmail();
         this.phone = customer.getPhone();
+        this.isAdmin = customer.isAdmin();
     }
 }

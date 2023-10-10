@@ -1,13 +1,11 @@
 package com.example.kinoxpproject.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
-
+@Setter
+@Getter
 @Entity
 @Data
 @NoArgsConstructor
@@ -32,6 +30,11 @@ public class Customer {
     @Column(name = "customer_phone") // Specify the column name for phone
     private String phone;
 
+    @Column(name = "is_admin")
+    private boolean isAdmin;
+
     @OneToMany(mappedBy = "customer")
     private List<Booking> bookings;
+
+
 }

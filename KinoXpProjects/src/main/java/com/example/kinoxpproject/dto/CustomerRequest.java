@@ -13,6 +13,7 @@ public class CustomerRequest {
     private String name;
     private String password;
     private String email;
+    private boolean isAdmin;
 
 
     public Customer toCustomer() {
@@ -20,6 +21,7 @@ public class CustomerRequest {
                 .name(name)
                 .password(password)
                 .email(email)
+                .isAdmin(isAdmin)
                 .build();
     }
 }
