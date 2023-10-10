@@ -13,7 +13,6 @@ public class AdminController {
 
     private final CustomerService customerService;
 
-
     public AdminController(CustomerService customerService) {
         this.customerService = customerService;
     }

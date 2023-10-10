@@ -115,9 +115,10 @@ public class testData implements ApplicationRunner {
         customerRequest.setName("Ole kloak");
 
        // customerService.addCustomer(customerRequest);
+        Customer customer = customerService.authLogin("hej", "hej");
 
        int i = customerRepository.getCustIdByNameAndPassword("hej", "hej");
-        System.out.println(i);
+        System.out.println(customer.getIsAdmin());
 
 
 

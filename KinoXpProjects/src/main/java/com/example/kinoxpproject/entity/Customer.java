@@ -31,7 +31,7 @@ public class Customer {
     private String phone;
 
     @Column(name = "is_admin")
-    private boolean isAdmin;
+    private int isAdmin;
 
     @OneToMany(mappedBy = "customer")
     private List<Booking> bookings;

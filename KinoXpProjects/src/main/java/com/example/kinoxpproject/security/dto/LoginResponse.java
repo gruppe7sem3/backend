@@ -8,7 +8,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class LoginResponse {
-    private String message;
-    private boolean success;
+    private Integer custId;
+    private int isAdmin;
+
+    public LoginResponse(Integer custId, int isAdmin) {
+        this.custId = custId;
+        this.isAdmin = isAdmin;
+    }
 
 }

@@ -13,7 +13,7 @@ public class CustomerResponse {
 
     private int custId;
     private String name;
-    private boolean isAdmin;
+    private int isAdmin;
 
     private String password;
     private String email;
@@ -27,6 +27,6 @@ public class CustomerResponse {
         this.password = customer.getPassword();
         this.email = customer.getEmail();
         this.phone = customer.getPhone();
-        this.isAdmin = customer.isAdmin();
+        this.isAdmin = customer.getIsAdmin();
     }
 }

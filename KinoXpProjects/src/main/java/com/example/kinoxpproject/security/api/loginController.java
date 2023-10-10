@@ -2,6 +2,7 @@ package com.example.kinoxpproject.security.api;
 
 import com.example.kinoxpproject.entity.Customer;
 import com.example.kinoxpproject.security.dto.LoginRequest;
+import com.example.kinoxpproject.security.dto.LoginResponse;
 import com.example.kinoxpproject.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,17 +19,21 @@ public class loginController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest) {
+    public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
         // Authenticate the user based on email and password
         Customer customer = customerService.authLogin(loginRequest.getName(), loginRequest.getPassword());
-        Integer custId = customerService.getCustIdByUsernameAndPassword( loginRequest.getPassword(),loginRequest.getName());
-
+        Integer custId = customerService.getCustIdByUsernameAndPassword(loginRequest.getPassword(), loginRequest.getName());
         if (customer == null) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
         }
 
-        // Authentication successful, you can generate a JWT token here and return it
-        // ...
-        return ResponseEntity.ok("" + custId);
+        Integer valueId = customer.getIsAdmin();
+
+        // Create a LoginResponse object that includes both custId and value
+        LoginResponse loginResponse = new LoginResponse(custId, valueId);
+
+        // Return the LoginResponse in a single ResponseEntity
+        return ResponseEntity.ok(loginResponse);
     }
-    }
+
+}
