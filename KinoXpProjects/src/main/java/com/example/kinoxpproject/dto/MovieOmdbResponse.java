@@ -85,6 +85,9 @@ public class MovieOmdbResponse {
   @JsonProperty("Response")
   private String response;
 
+  @JsonProperty("TrailerLink")
+  private String trailerLink;
+
   @Getter @Setter
   public static class Rating {
 

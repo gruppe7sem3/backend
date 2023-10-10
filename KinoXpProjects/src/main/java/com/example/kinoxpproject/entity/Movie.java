@@ -31,6 +31,7 @@ public class Movie {
     private String writer;
     private String actors;
 
+
     @Column(length = 2000)
     private String plot;
     @Column(length = 2000)
@@ -45,5 +46,5 @@ public class Movie {
     private String imdbID;
     private String website;
     private String response;
-
+    private String trailerLink;
 }

@@ -57,6 +57,7 @@ public class MovieService {
                 //.plotDK(dkPlot)
                 .poster(dto.getPoster())
                 .imdbID(dto.getImdbID())
+                .trailerLink(dto.getTrailerLink())
                 .build();
         try {
             movieRepository.save(movie);
