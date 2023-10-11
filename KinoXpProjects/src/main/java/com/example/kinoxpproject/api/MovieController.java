@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
 @CrossOrigin(origins = "*")
 @RequestMapping("/api/movies")
 public class MovieController {
@@ -18,21 +17,26 @@ public class MovieController {
 
   public MovieController(MovieService movieService) {
     this.movieService = movieService;
-  }
 
+  }
 
   @RequestMapping("/imdbid/{imdbId}")
   public Movie getMovie(@PathVariable String imdbId) {
     return movieService.getMovieByImdbId(imdbId);
   }
-  @PostMapping("/{imdbId}")
-  public Movie addMovie(@PathVariable String imdbId) throws JsonProcessingException {
-    return movieService.addMovie(imdbId);
+
+  @PostMapping
+  public Movie addMovie(@RequestParam("imdbId") String imdbId, @RequestParam("trailerLink") String trailerLink) throws JsonProcessingException {
+    return movieService.addMovie(imdbId, trailerLink);
   }
+
 
   @GetMapping("/all")
   public List<Movie> getAllMovies() {
     return movieService.getAllMovies();
   }
 
+
+
   }
+

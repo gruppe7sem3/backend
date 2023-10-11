@@ -33,7 +33,7 @@ public class MovieService {
         return movieRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Movie not found"));
     }
 
-    public Movie addMovie(String imdbId) throws JsonProcessingException {
+    public Movie addMovie(String imdbId, String trailerLink) throws JsonProcessingException {
         MovieOmdbResponse dto = omdbFacade.getMovie(imdbId);
         //String dkPlot = translator.translate(dto.getPlot());
 
@@ -57,7 +57,7 @@ public class MovieService {
                 //.plotDK(dkPlot)
                 .poster(dto.getPoster())
                 .imdbID(dto.getImdbID())
-                .trailerLink(dto.getTrailerLink())
+                .trailerLink(trailerLink)
                 .build();
         try {
             movieRepository.save(movie);
@@ -73,19 +73,19 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-    // delete movie
-    public Movie deleteMovie(String imdbId) {
-        // tjek if movie eksistere
-        Optional<Movie> optionalMovie = movieRepository.findByImdbID(imdbId);
 
-        if (optionalMovie.isPresent()) {
+  // public Movie deleteMovie(String imdbId) {
+        // tjek if movie eksistere
+       // Optional<Movie> optionalMovie = movieRepository.findByImdbID(imdbId);
+
+      //  if (optionalMovie.isPresent()) {
             // Movie exists, so delete it
-            Movie movie = optionalMovie.get();
-            movieRepository.delete(movie);
-            return movie;
-        } else {
+            //Movie movie = optionalMovie.get();
+           // movieRepository.delete(movie);
+            //return movie;
+        //} else {
             // Movie does not exist, return null eller throw en exception
-            throw new EntityNotFoundException("Movie with IMDb ID " + imdbId + " not found.");
+           // throw new EntityNotFoundException("Movie with IMDb ID " + imdbId + " not found.");
         }
-    }
-}
+
+
