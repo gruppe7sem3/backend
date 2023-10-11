@@ -5,6 +5,7 @@ import com.example.kinoxpproject.dto.MovieOmdbResponse;
 import com.example.kinoxpproject.entity.Movie;
 import com.example.kinoxpproject.repository.MovieRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MovieService {
@@ -77,7 +79,6 @@ public class MovieService {
     public Movie deleteMovie(String imdbId) {
         // tjek if movie eksistere
         Optional<Movie> optionalMovie = movieRepository.findByImdbID(imdbId);
-
         if (optionalMovie.isPresent()) {
             // Movie exists, so delete it
             Movie movie = optionalMovie.get();
@@ -87,5 +88,9 @@ public class MovieService {
             // Movie does not exist, return null eller throw en exception
             throw new EntityNotFoundException("Movie with IMDb ID " + imdbId + " not found.");
         }
+
+
     }
 }
+
+
