@@ -73,19 +73,5 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
-    // delete movie
-    public Movie deleteMovie(String imdbId) {
-        // tjek if movie eksistere
-        Optional<Movie> optionalMovie = movieRepository.findByImdbID(imdbId);
-
-        if (optionalMovie.isPresent()) {
-            // Movie exists, so delete it
-            Movie movie = optionalMovie.get();
-            movieRepository.delete(movie);
-            return movie;
-        } else {
-            // Movie does not exist, return null eller throw en exception
-            throw new EntityNotFoundException("Movie with IMDb ID " + imdbId + " not found.");
-        }
     }
 }
