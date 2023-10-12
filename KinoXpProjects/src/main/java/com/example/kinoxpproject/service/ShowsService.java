@@ -5,6 +5,7 @@ import com.example.kinoxpproject.dto.ShowsResponse;
 import com.example.kinoxpproject.entity.Movie;
 import com.example.kinoxpproject.entity.Shows;
 import com.example.kinoxpproject.repository.ShowsRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -61,4 +63,19 @@ public class ShowsService {
 
     }
 
+    public Shows deleteShow(int showId) {
+        //tjek if Show eksistere
+        Optional<Shows> optionalShows = showsRepository.findByshowId(showId);
+
+        if (optionalShows.isPresent()) {
+            //Show exists, so delete it
+            Shows shows = optionalShows.get();
+            showsRepository.delete(shows);
+            return shows;
+        } else {
+            //Movie does not exist, return null eller throw en exception
+            throw new EntityNotFoundException("Show with Show ID " + showId + " not found.");
+        }
+
+    }
 }

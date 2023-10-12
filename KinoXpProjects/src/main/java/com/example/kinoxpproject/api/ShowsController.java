@@ -49,6 +49,18 @@ public class ShowsController {
         return showsService.addShows(showsRequest);
     }
 
+    @DeleteMapping("/delete/{showId}")
+    public ResponseEntity<String> deleteShow(@PathVariable Integer showId) {
+        // Call the service to delete the show by show ID
+        Shows deleted = showsService.deleteShow(showId);
+
+        if (deleted!=null) {
+            return ResponseEntity.ok("Show deleted successfully.");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Show not found or could not be deleted.");
+        }
+    }
+
 
 
 
