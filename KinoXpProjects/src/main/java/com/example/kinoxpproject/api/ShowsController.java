@@ -19,7 +19,7 @@ import java.util.List;
 public class ShowsController {
 
     private MovieService movieService;
-    private final ShowsService showsService;
+    private ShowsService showsService;
 
     public ShowsController(ShowsService showsService, MovieService movieService) {
         this.showsService = showsService;
