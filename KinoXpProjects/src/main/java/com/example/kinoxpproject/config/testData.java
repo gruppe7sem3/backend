@@ -121,7 +121,7 @@ public class testData implements ApplicationRunner {
         System.out.println(customer.getIsAdmin());
 
 
-        movieService.deleteMovie("tt9362722");
+        //movieService.deleteMovie("tt9362722");
 
        // movieService.addMovie("tt0119695", "https://www.youtube.com/watch?v=juTBjT-hzlc&ab_channel=VideoDetective");
 
