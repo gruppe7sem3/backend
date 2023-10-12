@@ -1,4 +1,4 @@
-package com.example.kinoxpproject.config;
+package com.example.kinoxpproject;
 
 import com.example.kinoxpproject.dto.BookingRequest;
 import com.example.kinoxpproject.dto.CustomerRequest;
