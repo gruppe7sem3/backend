@@ -7,16 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="KinoXpProject" />
+        <module name="kinoxp" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="kinoxp" target="17" />
       <module name="KinoXpProject" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="KinoXpProject" options="-parameters" />
+      <module name="kinoxp" options="-parameters" />
     </option>
   </component>
 </project>
